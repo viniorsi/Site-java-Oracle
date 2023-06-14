@@ -29,10 +29,10 @@
 
 					<div class="buttons">	
 	        			 <a href="index.jsp" ><button class="button back" type="button">Voltar</button></a>
-	        			 <p>
+	        			 
 							<input  type="submit" value="Cadastrar" class="button" />
-						</p>
-					</div>
+						
+	 </div>
 			</form>
 		</div>
 	</div>

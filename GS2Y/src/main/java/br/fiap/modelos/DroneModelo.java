@@ -4,6 +4,7 @@ package br.fiap.modelos;
 import java.time.LocalDate;
 
 
+
 public class DroneModelo {
 	int id;
 	String modelo;
@@ -11,8 +12,18 @@ public class DroneModelo {
 	String capacidadeBateria;
 	String numeroSerie;
 	String CapacidadeCarga;
+	LicencaVooModel licenca;
 	
 
+	
+	
+	
+	public LicencaVooModel getLicenca() {
+		return licenca;
+	}
+	public void setLicenca(LicencaVooModel licenca) {
+		this.licenca = licenca;
+	}
 	public int getId() {
 		return id;
 	}

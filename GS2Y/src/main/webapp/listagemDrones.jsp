@@ -12,6 +12,7 @@
 </head>
 <body>
 	<% List<DroneModelo> lista = new DroneDAO().listar(); %>
+	<% List<DroneModelo> listaL = new DroneDAO().listarlicensa(); %>
 
 <div class="main">
 	<h1>Listagem de Drones</h1>
@@ -30,7 +31,9 @@
 		<tbody>
 			<%for(DroneModelo drone : lista) { %>
 			<tr>
-				<td><%= drone.getId()%></td>
+			
+			
+				<td><%=drone.getId()%></td>
 				<td><%=drone.getModelo()%></td>
 				<td><%=drone.getNumeroSerie() %></td>
 				<td><%=drone.getDataCompra()%></td>
@@ -39,9 +42,10 @@
 				<td><a href="cadastroLicencaVoo.jsp?drone_id=<%=drone.getId()%>" style="text-decoration: none">
 						<button id="botaoAlterar" type="submit">Adicionar licença</button>
 					</a>
-				</td>
+				</td><% } %>
+				
 				</tr>
-			<% } %>
+			
 		</tbody>
 	</table>
 	 <a href="navegacao.jsp" ><button class="button back" type="button">Voltar</button></a>

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import br.fiap.dao.conexao.Conexao;
 import br.fiap.modelos.DroneModelo;
+import br.fiap.modelos.LicencaVooModel;
 
 public class DroneDAO extends DAO {
 	public void inserir(DroneModelo drone) {
@@ -37,8 +38,9 @@ public class DroneDAO extends DAO {
 		connection = conexao.conectar();
 		DroneModelo drone;
 		
-		sql = "select idDrone, modelo, datacompra,capacidadebateria,numeroSerie "
-				+ ",capacidadeCarga  from Drone  ";
+		sql = "select idDrone, modelo, datacompra,capacidadebateria,numeroSerie,"
+				+ "capacidadeCarga from Drone ";
+			
 		
 		try {
 			ps = connection.prepareStatement(sql);
@@ -92,6 +94,44 @@ public class DroneDAO extends DAO {
 		}
 
 		return drone;
+	}
+	
+	public List<DroneModelo> listarlicensa() {
+		List<DroneModelo> lista = new ArrayList<DroneModelo>();
+		Conexao conexao = new Conexao();
+		connection = conexao.conectar();
+		DroneModelo drone;
+		LicencaVooModel licenca;
+		
+		sql = "select d.idDrone, d.modelo, d.datacompra,d.capacidadebateria,d.numeroSerie,d.capacidadeCarga,\r\n"
+				+ "l.idlicensa as idL from Drone d, licensa_voo l \r\n"
+				+ "where d.idDrone = l.idDrone";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				drone = new DroneModelo();
+				drone.setId(rs.getInt("idDrone"));
+				drone.setModelo(rs.getString("modelo"));
+				drone.setDataCompra(rs.getDate("datacompra").toLocalDate());
+				drone.setCapacidadeBateria(rs.getString("capacidadebateria"));
+				drone.setNumeroSerie(rs.getString("numeroSerie"));
+				drone.setCapacidadeCarga(rs.getString("capacidadeCarga"));
+				licenca = new LicencaVooModel();
+				licenca.setId(rs.getInt("idl"));
+				drone.setLicenca(licenca);
+				lista.add(drone);
+			}
+			ps.close();
+			conexao.desconectar();
+		}
+		catch(SQLException e) {
+			System.out.println("erro ao listar Drones\n " + e);
+		}
+		
+		
+		return lista;
 	}
 	
 	

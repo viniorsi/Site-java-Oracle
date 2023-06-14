@@ -26,6 +26,7 @@
 						<div>
 					<p> 
 						<input type="submit" value="Entrar" class="button"/> 
+						<a href="navegacao.jsp">navegacao</a>
 					</p>
 					<%if(usuarioId != null){ %>
 					<p>
