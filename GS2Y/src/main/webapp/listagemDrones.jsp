@@ -39,10 +39,25 @@
 				<td><%=drone.getDataCompra()%></td>
 				<td><%=drone.getCapacidadeBateria() %></td>
 				<td><%=drone.getCapacidadeCarga() %></td>
-				<td><a href="cadastroLicencaVoo.jsp?drone_id=<%=drone.getId()%>" style="text-decoration: none">
+				
+				<% if(drone.getLicenca().getId() != 0) {%>
+				
+				<td><a href="licencaDrone.jsp?drone_id=<%=drone.getId()%>" style="text-decoration: none">
+						<button id="botaoAlterar" type="submit">Ver licença</button>
+					</a></td>
+			
+				<%  }else{   %>
+				<td>
+				<a href="cadastroLicencaVoo.jsp?drone_id=<%=drone.getId()%>" style="text-decoration: none">
 						<button id="botaoAlterar" type="submit">Adicionar licença</button>
 					</a>
-				</td><% } %>
+				</td>
+				<%} %>
+				
+				
+				
+				
+				<% } %>
 				
 				</tr>
 			

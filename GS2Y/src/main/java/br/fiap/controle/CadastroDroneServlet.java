@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.fiap.Util.Util;
 import br.fiap.classedao.DroneDAO;
-
 import br.fiap.modelos.DroneModelo;
+import br.fiap.modelos.LicencaVooModel;
 
 /**
  * Servlet implementation class CadastroDroneServlet
@@ -38,12 +38,14 @@ public class CadastroDroneServlet extends HttpServlet {
 		DroneDAO dao = new DroneDAO();
 		DroneModelo drone = new DroneModelo();
 		LocalDate data = util.formatarData(request.getParameter("dataCompra"));
-		
+		LicencaVooModel licenca = new LicencaVooModel();
 		drone.setModelo(request.getParameter("modelo"));
 		drone.setDataCompra(data);
 		drone.setCapacidadeBateria(request.getParameter("capacidadeBateria"));
 		drone.setCapacidadeCarga(request.getParameter("capacidadeCarga"));
 		drone.setNumeroSerie(request.getParameter("nSerie"));
+		licenca.setId(0);
+		drone.setLicenca(licenca);
 		
 		dao.inserir(drone);	
 		

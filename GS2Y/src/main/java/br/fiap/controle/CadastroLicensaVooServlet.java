@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.fiap.Util.Util;
 import br.fiap.classedao.DroneDAO;
 import br.fiap.classedao.LicencaVooDAO;
+import br.fiap.modelos.DroneModelo;
 import br.fiap.modelos.LicencaVooModel;
 
 /**
@@ -40,14 +41,19 @@ public class CadastroLicensaVooServlet extends HttpServlet {
 		LocalDate dataValidade = util.formatarData(request.getParameter("dataDeEmissao"));
 		Integer idDrone = Integer.parseInt(request.getParameter("idDrone")); 
 		
-		
-			licencaVoo.setIdDrone(droneDao.pesquisar(idDrone));
+		DroneModelo drone = new DroneModelo();
+		DroneDAO dronedao = new DroneDAO();
+		licencaVoo.setIdDrone(droneDao.pesquisar(idDrone));
 		licencaVoo.setLicencaVoo(request.getParameter("licencaVoo"));
 		licencaVoo.setDataEmissao(dataEmissao);
 		licencaVoo.setDataValidade(dataValidade);
-		
+		LicencaVooModel ativa = new LicencaVooModel();
+		ativa.setId(1);
 		if(dataEmissao.compareTo(dataValidade)== 1) {
+		drone.setId(idDrone);
+		drone.setLicenca(ativa);
 		dao.inserir(licencaVoo);	
+		droneDao.atualizarLicenca(drone);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("navegacao.jsp");
 		dispatcher.forward(request, response);
 		}else {

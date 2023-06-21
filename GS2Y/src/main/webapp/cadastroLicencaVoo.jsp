@@ -27,9 +27,9 @@
 			</p>
 			
 			<p>
-				<label for="nomeProduto">Número de série:&ensp;</label>
+				<label for="nSerie">Número de série:&ensp;</label>
 				<span><%=drone.getNumeroSerie()%></span>
-				<input name="nomeProduto" type="hidden" value="<%=drone.getNumeroSerie()%>" value="readonly"/>
+				<input name="nSerie" type="hidden" value="<%=drone.getNumeroSerie()%>" value="readonly"/>
 			</p>
 
 			<p>
