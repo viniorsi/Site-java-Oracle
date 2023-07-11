@@ -12,7 +12,7 @@
 </head>
 <body>
 	<% List<DroneModelo> lista = new DroneDAO().listar(); %>
-	<% List<DroneModelo> listaL = new DroneDAO().listarlicensa(); %>
+	<% List<DroneModelo> listaL = new DroneDAO().listarlicenca(); %>
 
 <div class="main">
 	<h1>Listagem de Drones</h1>

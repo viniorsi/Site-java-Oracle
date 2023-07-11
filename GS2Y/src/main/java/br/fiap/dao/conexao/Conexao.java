@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexao {
 	private final String url = "jdbc:oracle:thin:@XXXXXX";
 	private final String driver = "oracle.jdbc.driver.OracleDriver";
-	private final String user = "XXXXX";
+	private final String user = "XXXXXX";
 	private final String password = "XXXXX";
 	private Connection conexao;
 

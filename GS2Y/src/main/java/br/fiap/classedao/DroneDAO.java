@@ -120,7 +120,7 @@ public class DroneDAO extends DAO {
 		return drone;
 	}
 	
-	public List<DroneModelo> listarlicensa() {
+	public List<DroneModelo> listarlicenca() {
 		List<DroneModelo> lista = new ArrayList<DroneModelo>();
 		Conexao conexao = new Conexao();
 		connection = conexao.conectar();
@@ -128,7 +128,7 @@ public class DroneDAO extends DAO {
 		LicencaVooModel licenca;
 		
 		sql = "select d.idDrone, d.modelo, d.datacompra,d.capacidadebateria,d.numeroSerie,d.capacidadeCarga,\r\n"
-				+ "l.idlicensa as idL from Drone d, licensa_voo l \r\n"
+				+ "l.idlicenca as idL from Drone d, licenca_voo l \r\n"
 				+ "where d.idDrone = l.idDrone";
 		
 		try {

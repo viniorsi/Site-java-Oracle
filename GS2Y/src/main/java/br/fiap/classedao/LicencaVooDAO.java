@@ -11,7 +11,7 @@ public class LicencaVooDAO extends DAO {
 	public void inserir(LicencaVooModel licencaVoo) {
 		Conexao conexao = new Conexao();
 		connection = conexao.conectar();
-		sql = "insert into licensa_VOO VALUES(idLicenca_voo_seq.nextval,?,?,?,? )";
+		sql = "insert into licenca_VOO VALUES(idLicenca_voo_seq.nextval,?,?,?,? )";
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setInt(1, licencaVoo.getDrone().getId());
@@ -36,16 +36,16 @@ public class LicencaVooDAO extends DAO {
 		DroneModelo drone = new DroneModelo();
 		drone.setId(idDrone);
 
-		sql = "SELECT * FROM  licensa_VOO WHERE idDrone = ?";
+		sql = "SELECT * FROM  licenca_VOO WHERE idDrone = ?";
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setInt(1, idDrone);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				licenca = new LicencaVooModel();
-				licenca.setId(rs.getInt("idLicensa"));
+				licenca.setId(rs.getInt("idLicenca"));
 				licenca.setIdDrone(drone);
-				licenca.setLicencaVoo(rs.getString("licensaVoo"));
+				licenca.setLicencaVoo(rs.getString("licencaVoo"));
 				licenca.setDataValidade(rs.getDate("dataValidade").toLocalDate());
 				licenca.setDataEmissao(rs.getDate("dataEmissao").toLocalDate());
 			
